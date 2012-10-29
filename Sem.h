@@ -60,6 +60,7 @@ FIN_AUTOMATA(semaforo, A1, StopCondi_sem)
 /**
  * @brief  Funcion que espera 3 segundos hasta cambiar el color del semaforo
 */
+
 void SEM_TRANS_tres_segundos(void);
 
 /**
