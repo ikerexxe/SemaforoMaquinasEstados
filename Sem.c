@@ -31,7 +31,18 @@
 	#define sem_h
 	#include "sem.h"
 #endif
+#ifndef framBuffer_h
+	#define framBuffer_h
+	#include "frameBuffer.h"
+#endif
 
+/*********************************************************************
+**																	**
+** GLOBAL VARIABLES													**
+** 																	**
+**********************************************************************/
+
+int get_id=0;
 /*********************************************************************
 **																	**
 ** LOCAL FUNCTIONS													**
@@ -45,19 +56,23 @@ void SEM_TRANS_tres_segundos(void){
  * @brief  Funcion que dibuja en pantalla el color verde
 */
 void SEM_ACCION_verde(void){
-	RIT128x96x4StringDraw("Verde", 10, 5, 15);
+	FRAME_BUFFER_deleteElement(get_id);
+	get_id=FRAME_BUFFER_insertText("Verde", 10, 5, 15);
+
 }
 
 /**
  * @brief  Funcion que dibuja en pantalla el color ambar
 */
 void SEM_ACCION_ambar(void){
-	RIT128x96x4StringDraw("AMBAR", 10, 5, 15);
+	FRAME_BUFFER_deleteElement(get_id);
+	get_id=FRAME_BUFFER_insertText("Ambar", 10, 5, 15);
 }
 
 /**
  * @brief  Funcion que dibuja en pantalla el color rojo
 */
 void SEM_ACCION_rojo(void){
-	RIT128x96x4StringDraw("Rojo", 10, 5, 15);
+	FRAME_BUFFER_deleteElement(get_id);
+	get_id=FRAME_BUFFER_insertText("Rojo", 10, 5, 15);
 }
