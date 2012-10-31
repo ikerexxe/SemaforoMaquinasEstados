@@ -1,1 +1,94 @@
-//Acordaros de añadir comentarios a los documentos
+/** @addtogroup MINI_PIANO_MODULE
+*
+* @{
+
+* @file displayStellaris.c
+* @brief La implementacion del motor interno de la maquina de estados.
+*
+* @version v0.0
+* @date   	2012-10-31
+*
+* @note gpl2 license  2011, Ibon Ortega
+*
+* @par VERSION HISTORY
+* Version : 1
+* Date : 2012-10-31
+* Revised by : 	ibon.ortega@alumni.mondragon.edu
+* Description : Original version.
+*
+* @}
+*/
+
+/*********************************************************************
+**																	**
+** MODULES USED 													**
+** 																	**
+**********************************************************************/
+
+#ifndef MOTORAUTOMATAS_H
+	#define MOTORAUTOMATAS_H
+	#include "MotorAutomatas.h"
+#endif
+
+/*********************************************************************
+** 																	**
+** GLOBAL VARIABLES 												**
+** 																	**
+**********************************************************************/
+
+
+/*********************************************************************
+**																	**
+** LOCAL FUNCTIONS 													**
+** 																	**
+**********************************************************************/
+
+/**
+ * @brief  Funcion que ejecuta el automata
+ *
+*/
+void EjecutaAutomata(TS_AUTOMATA *elAutomata)
+{
+	TS_ESTADO **Indx;    /* Valor indice rastreador */
+
+	if (elAutomata->StopCond())  return;
+
+	for (Indx = elAutomata->estado; *Indx != NULL; ++Indx)
+	{
+	    if (fms_mv == (*Indx)->id)
+	    {
+			EjecutaEstado(*Indx);
+			return;
+	    }
+	}
+	pinta_error("\nmv>ERROR (fms_mv tipo_movi): ", fms_mv, tipo_movi);
+}
+
+/**
+ * @brief  Funcion que ejecuta el estado vertical
+ *
+*/
+void EjecutaEstadoVertical(TS_ESTADO *elEstado)
+{
+	TS_EVEACC *Indx;   /* Indice de rastreo */
+
+	(*elEstado->controles)();
+
+	for (Indx = elEstado->funcion; Indx->evento != NULL; ++Indx)
+	{
+		if (Indx->evento() == TRUE)
+		{
+			if (Indx->accion != NULL)
+			{
+				Indx->accion();
+			}
+			if (Indx->id != fms_mv)
+			{
+				fms_mv_anterior = fms_mv;
+				fms_mv = Indx->id;
+
+				return;
+			}
+		}
+	}
+}
