@@ -24,28 +24,10 @@
 ** MODULES USED 													**
 ** 																	**
 **********************************************************************/
-#ifndef KEYPAD_H
-	#define KEYPAD_H
-	#include "keypadGenerico.h"
-#endif
 #ifndef FRAMEBUFFER_H
 	#define FRAMEBUFFER_H
 	#include "frameBuffer.h"
 #endif
-#ifndef PWM_H
-	#define PWM_H
-	#include "pwmGenerico.h"
-#endif
-
-/*********************************************************************
-** 																	**
-** EXPORTED VARIABLES 												**
-** 																	**
-*********************************************************************/
-extern unsigned char g_ucKeypadSwitches; //valor de la tecla pulsada en el keypad
-extern unsigned char g_ucChangedData; //si se ha cambiado la tecla que se esta pulsando
-extern unsigned long g_ulNoteFrecuency; //frecuencia a la que emite el PWM
-extern unsigned char g_ucNote; //nota que se esta pulsando
 
 /*********************************************************************
 ** 																	**
@@ -58,15 +40,6 @@ extern unsigned char g_ucNote; //nota que se esta pulsando
  *
 */
 void DISPLAY_init();
-
-/**
- * @brief  Funcion que asigna el valor de la nota a reproducir en las variables globales
- * y tambien muestra en pantalla estos valores
- *
- * @return        Valor booleano que representa si se ha tocado una tecla distinta
- *
-*/
-tBoolean DISPLAY_displayNote();
 
 /**
  * @brief  Funcion que escribe el texto que hay en el buffer intermedio

@@ -29,14 +29,6 @@
 	#define DISPLAY_H
 	#include "displayGenerico.h"
 #endif
-#ifndef KEYPAD_H
-	#define KEYPAD_H
-	#include "keypadGenerico.h"
-#endif
-#ifndef KEYPADLM3S_H
-	#define KEYPADLM3S_H
-	#include "keypadLM3S.h"
-#endif
 
 /*********************************************************************
 ** 																	**
@@ -57,59 +49,6 @@ int ejecutado = 0; //sirve para saber si es la primera vez que ejecutamos el pro
 */
 void DISPLAY_init(){
 	RIT128x96x4Init(1000000);
-}
-
-/**
- * @brief  Funcion que asigna el valor de la nota a reproducir en las variables globales
- * y tambien muestra en pantalla estos valores
- *
- * @return        Valor booleano que representa si se ha tocado una tecla distinta
- *
-*/
-tBoolean DISPLAY_displayNote(){
-	tBoolean ret = false; //guarda si se ha pulsado una tecla distinta
-	unsigned char changedBit; //guarda la diferencia del cambio de tecla
-
-	if(ejecutado == 0){
-		FRAME_BUFFER_insertText("do re mi fa sol", 10, 15);
-		FRAME_BUFFER_insertText("----------------", 10, 25);
-		g_ucChangedData = 1;
-		ejecutado = 1;
-	}
-
-	if( g_ucNote == MI ){
-		FRAME_BUFFER_deleteElement(2);
-		FRAME_BUFFER_insertText("mi", 10, 35);
-	} else	if( g_ucNote == FA ){
-		FRAME_BUFFER_deleteElement(2);
-		FRAME_BUFFER_insertText("fa", 10, 35);
-	} else	if( g_ucNote == RE ){
-		FRAME_BUFFER_deleteElement(2);
-		FRAME_BUFFER_insertText("re", 10, 35);
-	} else	if( g_ucNote == SOL ){
-		FRAME_BUFFER_deleteElement(2);
-		FRAME_BUFFER_insertText("sol", 10, 35);
-	} else	if( g_ucNote == DO ){
-		FRAME_BUFFER_deleteElement(2);
-		FRAME_BUFFER_insertText("do", 10, 35);
-	} else	if( g_ucNote == SILENCE ){
-		FRAME_BUFFER_deleteElement(2);
-		FRAME_BUFFER_insertText("silence", 10, 35);
-	}
-
-	if(g_ucChangedData != 0){
-		FRAME_BUFFER_writeToDisplay();
-	}
-
-	changedBit = g_ucChangedData  & 0x01;
-
-	if (  changedBit != 0 ){
-		if ( g_ucKeypadSwitches  == KEY_UP){
-			ret = true;
-		}
-	}
-
-	return ret;
 }
 
 /**

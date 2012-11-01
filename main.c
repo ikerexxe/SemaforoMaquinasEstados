@@ -24,19 +24,27 @@
 ** MODULES USED 													**
 ** 																	**
 **********************************************************************/
+#include "inc/hw_types.h"
+#include "inc/hw_memmap.h"
+#include "driverlib/sysctl.h"
+#include "driverlib/systick.h"
+#include "driverlib/gpio.h"
 
-#ifndef framBuffer_h
-	#define framBuffer_h
+#ifndef FRAMEBUFFER_H
+	#define FRAMEBUFFER_H
 	#include "frameBuffer.h"
 #endif
-
-#ifndef displayGenerico_h
-	#define displayGenerico_h
+#ifndef DISPLAYGENERICO_H
+	#define DISPLAYGENERICO_H
 	#include "displayGenerico.h"
 #endif
-#ifndef sem_h
-	#define sem_h
+#ifndef SEM_H
+	#define SEM_H
 	#include "sem.h"
+#endif
+#ifndef MOTOR_H
+	#define MOTOR_H
+	#include "motorAutomatas.h"
 #endif
 
 int main(void)
@@ -44,6 +52,6 @@ int main(void)
 	DISPLAY_init();
     while(1)
     {
-
+    	;
     }
 }
