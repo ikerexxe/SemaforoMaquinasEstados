@@ -31,7 +31,7 @@
 			<!-- compile all the c source file in the project -->
 			<fileset dir="." includes="**/*.c"/>
 			<fileset dir="." includes="**/*.s"/>
-			<project outfile="${project.name}.elf" overwrite="true" type="xcode"/>
+<project outfile="${project.name}.elf" overwrite="true" type="xcode"/>
 			
 			<!-- defines -->
 			<defineset>
@@ -40,6 +40,7 @@
 </defineset>
 			
       <!-- include compile path -->
+      <includepath path="drivers"/>
       <includepath path="lm3slib/inc"/>
       <includepath path="lm3slib/driverlib"/>
       <includepath path="lm3slib"/>

@@ -20,11 +20,22 @@
 */
 
 /*********************************************************************
+**																	**
+** MODULES USED 													**
+** 																	**
+**********************************************************************/
+#ifndef MOTOR_H
+	#define MOTOR_H
+	#include "motorAutomatas.h"
+#endif
+
+/*********************************************************************
 ** 																	**
 ** DEFINITIONS AND MACROS 											**
 ** 																	**
 **********************************************************************/
 
+/*
 //Definicion de las transiciones
 TRANSICION(SEM_TRANS_tres_segundos)
 	????(T1, espera3seg, ?????, &SEM_TRANS_tres_segundos)
@@ -32,15 +43,15 @@ FIN_TRANSICION(espera3seg, T1, ????)
 
 //Definicion de los estados
 ESTADO(verde)
-	ITEM_EAC(E2, SEM_EVENTO_finVerde , SEM_ACCION_ambar)
+	ITEM_EAC(E2, SEM_EVENTO_finVerde, SEM_ACCION_ambar),
 FIN_ESTADO(verde, E1, NULL)
 
 ESTADO(ambar)
-	ITEM_EAC(E3, SEM_EVENTO_finAmbar , SEM_ACCION_rojo)
+	ITEM_EAC(E3, SEM_EVENTO_finAmbar, SEM_ACCION_rojo),
 FIN_ESTADO(ambar, E2, NULL)
 
 ESTADO(rojo)
-	ITEM_EAC(E1, SEM_EVENTO_finRojo , SEM_ACCION_verde)
+	ITEM_EAC(E1, SEM_EVENTO_finRojo, SEM_ACCION_verde),
 FIN_ESTADO(rojo, E3, NULL)
 
 //Definicion del automata del semaforo
@@ -49,7 +60,7 @@ AUTOMATA(semaforo)
 	&ambar,
 	&rojo
 FIN_AUTOMATA(semaforo, A1, StopCondi_sem)
-
+*/
 
 /*********************************************************************
 ** 																	**
@@ -60,7 +71,6 @@ FIN_AUTOMATA(semaforo, A1, StopCondi_sem)
 /**
  * @brief  Funcion que espera 3 segundos hasta cambiar el color del semaforo
 */
-
 void SEM_TRANS_tres_segundos(void);
 
 /**

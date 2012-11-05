@@ -2,6 +2,8 @@
 ## CoIDE
 #################
 debug.config
+Debug/*
+*.elf.xcodeproj/*
 
 #################
 ## Eclipse

@@ -27,7 +27,7 @@
 
 #ifndef MOTORAUTOMATAS_H
 	#define MOTORAUTOMATAS_H
-	#include "MotorAutomatas.h"
+	#include "motorAutomatas.h"
 #endif
 
 /*********************************************************************
@@ -76,7 +76,7 @@ void EjecutaEstadoVertical(TS_ESTADO *elEstado)
 
 	for (Indx = elEstado->funcion; Indx->evento != NULL; ++Indx)
 	{
-		if (Indx->evento() == TRUE)
+		if (Indx->evento() == true)
 		{
 			if (Indx->accion != NULL)
 			{

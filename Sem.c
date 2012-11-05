@@ -27,12 +27,12 @@
 ** 																	**
 **********************************************************************/
 
-#ifndef sem_h
-	#define sem_h
+#ifndef SEM_H
+	#define SEM_H
 	#include "sem.h"
 #endif
-#ifndef framBuffer_h
-	#define framBuffer_h
+#ifndef FRAMEBUFFER_H
+	#define FRAMEBUFFER_H
 	#include "frameBuffer.h"
 #endif
 
@@ -41,13 +41,17 @@
 ** GLOBAL VARIABLES													**
 ** 																	**
 **********************************************************************/
-
 int get_id=0;
+
 /*********************************************************************
 **																	**
 ** LOCAL FUNCTIONS													**
 ** 																	**
 **********************************************************************/
+
+/**
+ * @brief  Funcion que espera 3 segundos hasta cambiar el color del semaforo
+*/
 void SEM_TRANS_tres_segundos(void){
 	sleep(3000);
 }
@@ -57,7 +61,7 @@ void SEM_TRANS_tres_segundos(void){
 */
 void SEM_ACCION_verde(void){
 	FRAME_BUFFER_deleteElement(get_id);
-	get_id=FRAME_BUFFER_insertText("Verde", 10, 5, 15);
+	get_id=FRAME_BUFFER_insertText("Verde", 10, 5);
 
 }
 
@@ -66,7 +70,7 @@ void SEM_ACCION_verde(void){
 */
 void SEM_ACCION_ambar(void){
 	FRAME_BUFFER_deleteElement(get_id);
-	get_id=FRAME_BUFFER_insertText("Ambar", 10, 5, 15);
+	get_id=FRAME_BUFFER_insertText("Ambar", 10, 5);
 }
 
 /**
@@ -74,5 +78,5 @@ void SEM_ACCION_ambar(void){
 */
 void SEM_ACCION_rojo(void){
 	FRAME_BUFFER_deleteElement(get_id);
-	get_id=FRAME_BUFFER_insertText("Rojo", 10, 5, 15);
+	get_id=FRAME_BUFFER_insertText("Rojo", 10, 5);
 }
