@@ -47,11 +47,18 @@
 	#include "motorAutomatas.h"
 #endif
 
+/*********************************************************************
+** 																	**
+** EXPORTED VARIABLES 												**
+** 																	**
+*********************************************************************/
+extern TS_AUTOMATA semaforo;
+
 int main(void)
 {
 	DISPLAY_init();
     while(1)
     {
-    	;
+    	EjecutaAutomata(&semaforo);
     }
 }

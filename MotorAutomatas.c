@@ -35,8 +35,10 @@
 ** GLOBAL VARIABLES 												**
 ** 																	**
 **********************************************************************/
-BYTE fms_mv;
+BYTE fms_mv = 1;
 BYTE fms_mv_anterior;
+int get_id_motor=0;
+
 /*********************************************************************
 **																	**
 ** LOCAL FUNCTIONS 													**
@@ -61,14 +63,18 @@ void EjecutaAutomata(TS_AUTOMATA *elAutomata)
 			return;
 	    }
 	}
-	pinta_error("\nmv>ERROR (fms_mv tipo_movi): ", fms_mv, tipo_movi);
+	//pinta_error("\nmv>ERROR (fms_mv tipo_movi): ", fms_mv, tipo_movi);
+	FRAME_BUFFER_deleteElement(get_id_motor);
+	get_id_motor=FRAME_BUFFER_insertText("\nmv>ERROR (fms_mv): ", fms_mv, 5, 5);
+	FRAME_BUFFER_writeToDisplay();
+	//pinta_error("\nmv>ERROR (fms_mv): ", fms_mv);
 }
 
 /**
  * @brief  Funcion que ejecuta el estado vertical
  *
 */
-void EjecutaEstadoVertical(TS_ESTADO *elEstado)
+void EjecutaEstado(TS_ESTADO *elEstado)
 {
 	TS_EVEACC *Indx;   /* Indice de rastreo */
 

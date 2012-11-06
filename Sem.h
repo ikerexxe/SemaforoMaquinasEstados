@@ -31,39 +31,6 @@
 
 /*********************************************************************
 ** 																	**
-** DEFINITIONS AND MACROS 											**
-** 																	**
-**********************************************************************/
-
-/*
-//Definicion de las transiciones
-TRANSICION(SEM_TRANS_tres_segundos)
-	????(T1, espera3seg, ?????, &SEM_TRANS_tres_segundos)
-FIN_TRANSICION(espera3seg, T1, ????)
-
-//Definicion de los estados
-ESTADO(verde)
-	ITEM_EAC(E2, SEM_EVENTO_finVerde, SEM_ACCION_ambar),
-FIN_ESTADO(verde, E1, NULL)
-
-ESTADO(ambar)
-	ITEM_EAC(E3, SEM_EVENTO_finAmbar, SEM_ACCION_rojo),
-FIN_ESTADO(ambar, E2, NULL)
-
-ESTADO(rojo)
-	ITEM_EAC(E1, SEM_EVENTO_finRojo, SEM_ACCION_verde),
-FIN_ESTADO(rojo, E3, NULL)
-
-//Definicion del automata del semaforo
-AUTOMATA(semaforo)
-    &verde,
-	&ambar,
-	&rojo
-FIN_AUTOMATA(semaforo, A1, StopCondi_sem)
-*/
-
-/*********************************************************************
-** 																	**
 ** PROTOTYPES OF LOCAL FUNCTIONS 									**
 ** 																	**
 *********************************************************************/
@@ -71,7 +38,7 @@ FIN_AUTOMATA(semaforo, A1, StopCondi_sem)
 /**
  * @brief  Funcion que espera 3 segundos hasta cambiar el color del semaforo
 */
-void SEM_TRANS_tres_segundos(void);
+tBoolean SEM_TRANS_tres_segundos(void);
 
 /**
  * @brief  Funcion que dibuja en pantalla el color verde
@@ -87,3 +54,8 @@ void SEM_ACCION_ambar(void);
  * @brief  Funcion que dibuja en pantalla el color rojo
 */
 void SEM_ACCION_rojo(void);
+
+/**
+ * @brief  Funcion que decide si acabar el programa del automata
+*/
+tBoolean SEM_AUT_finish(void);

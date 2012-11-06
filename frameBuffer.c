@@ -94,6 +94,8 @@ int FRAME_BUFFER_insertImage(char *pic, int x, int y, int w, int h){
 int FRAME_BUFFER_insertText(char *texto, int x, int y){
 	if(display_element_kop < MAX_ELEMS){
 		displayElements[display_element_kop].id = display_element_kop;
+		displayElements[display_element_kop].xOld = displayElements[display_element_kop].x + strlen(displayElements[display_element_kop].picture_or_text);
+		displayElements[display_element_kop].yOld = displayElements[display_element_kop].y;
 		displayElements[display_element_kop].x = x;
 		displayElements[display_element_kop].y = y;
 		displayElements[display_element_kop].picture_or_text = texto;
@@ -164,12 +166,10 @@ void FRAME_BUFFER_writeToDisplay(void){
 	int index = 0; //contador para borrar el texto de la memoria
 	char str[30]; //memoria temporal que se usa para borrar el display
 
-	DISPLAY_borrar();
-
 	for(i = 0; i < display_element_kop; i++){
 		if((displayElements[i].xOld != displayElements[i].x) || (displayElements[i].yOld != displayElements[i].y)){
 			if(displayElements[i].what == 1){
-				size = strlen(displayElements[i].picture_or_text);
+				size = displayElements[i].xOld;
 				for(index = 0; index <size; index++){
 					str[index] = ' ';
 				}

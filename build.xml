@@ -31,7 +31,7 @@
 			<!-- compile all the c source file in the project -->
 			<fileset dir="." includes="**/*.c"/>
 			<fileset dir="." includes="**/*.s"/>
-<project outfile="${project.name}.elf" overwrite="true" type="xcode"/>
+			<project outfile="${project.name}.elf" overwrite="true" type="xcode"/>
 			
 			<!-- defines -->
 			<defineset>
