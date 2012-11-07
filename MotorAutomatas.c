@@ -63,11 +63,8 @@ void EjecutaAutomata(TS_AUTOMATA *elAutomata)
 			return;
 	    }
 	}
-	//pinta_error("\nmv>ERROR (fms_mv tipo_movi): ", fms_mv, tipo_movi);
-	FRAME_BUFFER_deleteElement(get_id_motor);
 	get_id_motor=FRAME_BUFFER_insertText("\nmv>ERROR (fms_mv): ", fms_mv, 5, 5);
 	FRAME_BUFFER_writeToDisplay();
-	//pinta_error("\nmv>ERROR (fms_mv): ", fms_mv);
 }
 
 /**

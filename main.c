@@ -35,10 +35,14 @@
 	#define FRAMEBUFFER_H
 	#include "frameBuffer.h"
 #endif
-/*#ifndef DISPLAYGENERICO_H
+#ifndef DISPLAYGENERICO_H
 	#define DISPLAYGENERICO_H
 	#include "displayGenerico.h"
-#endif*/
+#endif
+#ifndef MICRO_H
+	#define MICRO_H
+	#include "microGenerico.h"
+#endif
 #ifndef SEM_H
 	#define SEM_H
 	#include "sem.h"
@@ -57,15 +61,12 @@ extern TS_AUTOMATA Semaforo;
 
 int main(void)
 {
-	SysCtlClockSet(SYSCTL_SYSDIV_1 | SYSCTL_USE_OSC | SYSCTL_OSC_MAIN |SYSCTL_XTAL_8MHZ);
-	SysTickPeriodSet(8000000); // periodo=1 seg
-	SysTickIntEnable();
-	SysTickEnable();
-	IntMasterEnable();
-	Inicializar_pantalla();//DISPLAY_init();
-	FRAME_BUFFER_insertar_texto("Rojo", 5, 5);
-	FRAME_BUFFER_insertar_texto("Ambar", 25, 5);
-	FRAME_BUFFER_insertar_texto("Verde", 45, 5);
+	MICRO_init();
+	DISPLAY_init();
+	FRAME_BUFFER_insertText("Rojo", 5, 5);
+	FRAME_BUFFER_insertText("Ambar", 5, 25);
+	FRAME_BUFFER_insertText("Verde", 5, 45);
+	FRAME_BUFFER_writeToDisplay();
     while(1)
     {
     	EjecutaAutomata(&Semaforo);

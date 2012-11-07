@@ -74,7 +74,7 @@ FIN_AUTOMATA(Semaforo,101,SEM_AUT_finish)
 ** GLOBAL VARIABLES													**
 ** 																	**
 **********************************************************************/
-int get_id_sem=0;
+int get_id_sem=3;
 unsigned int ticks=0, ticksOld=0;
 unsigned int uticks=0;
 
@@ -91,46 +91,43 @@ tBoolean SEM_TRANS_tres_segundos(void)
 {
   while(ticksOld==ticks);
   ticksOld++;
+
   return true;
 }
 
 void __attribute__((interrupt)) sysTickIntHandler(void)
 {
   uticks=(uticks+1)%3;
-  if(uticks==0) ticks++;
+  if(uticks==0){
+	  ticks++;
+  }
 }
 
 /**
  * @brief  Funcion que dibuja en pantalla el color verde
 */
 void SEM_ACCION_verde(void){
-	Borrar_area_pantalla(50, 6, 4, 30);
-	FRAME_BUFFER_insertar_imagen(g_pucCirc, 10, 6, 44, 30);
-	/*FRAME_BUFFER_deleteElement(get_id_sem);
-	get_id_sem=FRAME_BUFFER_insertText("Verde", 10, 5);
-	FRAME_BUFFER_writeToDisplay();*/
+	FRAME_BUFFER_deleteElement(get_id_sem);
+	get_id_sem=FRAME_BUFFER_insertImage(g_pucCirc, 45, 44, 12, 10);
+	FRAME_BUFFER_writeToDisplay();
 }
 
 /**
  * @brief  Funcion que dibuja en pantalla el color ambar
 */
 void SEM_ACCION_ambar(void){
-	Borrar_area_pantalla(50, 6, 4, 30);
-	FRAME_BUFFER_insertar_imagen(g_pucCirc, 10, 6, 24, 30);
-	/*FRAME_BUFFER_deleteElement(get_id_sem);
-	get_id_sem=FRAME_BUFFER_insertText("Ambar", 10, 5);
-	FRAME_BUFFER_writeToDisplay();*/
+	FRAME_BUFFER_deleteElement(get_id_sem);
+	get_id_sem=FRAME_BUFFER_insertImage(g_pucCirc, 45, 24, 12, 10);
+	FRAME_BUFFER_writeToDisplay();
 }
 
 /**
  * @brief  Funcion que dibuja en pantalla el color rojo
 */
 void SEM_ACCION_rojo(void){
-	Borrar_area_pantalla(50, 6, 4, 30);
-	FRAME_BUFFER_insertar_imagen(g_pucCirc, 10, 6, 4, 30);
-	/*FRAME_BUFFER_deleteElement(get_id_sem);
-	get_id_sem=FRAME_BUFFER_insertText("Rojo", 10, 5);
-	FRAME_BUFFER_writeToDisplay();*/
+	FRAME_BUFFER_deleteElement(get_id_sem);
+	get_id_sem=FRAME_BUFFER_insertImage(g_pucCirc, 45, 4, 12, 10);
+	FRAME_BUFFER_writeToDisplay();
 }
 
 /**
