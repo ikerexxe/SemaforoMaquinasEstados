@@ -35,6 +35,10 @@
 	#define FRAMEBUFFER_H
 	#include "frameBuffer.h"
 #endif
+/*#ifndef MOTORAUTOMATAS_H
+	#define MOTORAUTOMATAS_H
+	#include "motorAutomatas.h"
+#endif*/
 
 /*********************************************************************
 ** 																	**
@@ -42,50 +46,28 @@
 ** 																	**
 **********************************************************************/
 
-const TS_EVEACC xVerde[] = {
-	{2, "SEM_TRANS_tres_segundos", SEM_TRANS_tres_segundos, NULL}
+ESTADO(Verde){
+	TRANSICION(2,SEM_TRANS_tres_segundos,NULL)
 };
-const TS_ESTADO verde = {1,"verde",SEM_ACCION_verde,(TS_EVEACC *) xVerde};
+FIN_ESTADO(Verde,1,SEM_ACCION_verde)
 
-const TS_EVEACC xAmbar[] = {
-	{3, "SEM_TRANS_tres_segundos", SEM_TRANS_tres_segundos, NULL}
+ESTADO(Ambar){
+	TRANSICION(3,SEM_TRANS_tres_segundos,NULL)
 };
-const TS_ESTADO ambar = {2,"ambar",SEM_ACCION_ambar,(TS_EVEACC *) xAmbar};
+FIN_ESTADO(Ambar,2,SEM_ACCION_ambar)
 
-const TS_EVEACC xRojo[] = {
-	{1, "SEM_TRANS_tres_segundos", SEM_TRANS_tres_segundos, NULL}
+ESTADO(Rojo){
+	TRANSICION(1,SEM_TRANS_tres_segundos,NULL)
 };
-const TS_ESTADO rojo = {3,"rojo",SEM_ACCION_rojo,(TS_EVEACC *) xRojo};
+FIN_ESTADO(Rojo,3,SEM_ACCION_rojo)
 
-const TS_ESTADO * const (xSemaforo[]) = {
-	&verde,
-	&ambar,
-	&rojo
+AUTOMATA(Semaforo){
+	&Verde,
+	&Ambar,
+	&Rojo
 };
-const TS_AUTOMATA semaforo = {101, "semaforo", SEM_AUT_finish, (TS_ESTADO **) xSemaforo};
 
-
-/*
-//Definicion de los estados
-ESTADO(verde)
-	ITEM_EAC(E2, SEM_TRANS_tres_segundos, SEM_ACCION_ambar),
-FIN_ESTADO(verde, E1, NULL)
-
-ESTADO(ambar)
-	ITEM_EAC(E3, SEM_TRANS_tres_segundos, SEM_ACCION_rojo),
-FIN_ESTADO(ambar, E2, NULL)
-
-ESTADO(rojo)
-	ITEM_EAC(E1, SEM_TRANS_tres_segundos, SEM_ACCION_verde),
-FIN_ESTADO(rojo, E3, NULL)
-
-//Definicion del automata del semaforo
-AUTOMATA(semaforo)
-    &verde,
-	&ambar,
-	&rojo
-FIN_AUTOMATA(semaforo, A1, NULL)
-*/
+FIN_AUTOMATA(Semaforo,101,SEM_AUT_finish)
 
 /*********************************************************************
 **																	**
@@ -93,6 +75,8 @@ FIN_AUTOMATA(semaforo, A1, NULL)
 ** 																	**
 **********************************************************************/
 int get_id_sem=0;
+unsigned int ticks=0, ticksOld=0;
+unsigned int uticks=0;
 
 /*********************************************************************
 **																	**
@@ -103,46 +87,50 @@ int get_id_sem=0;
 /**
  * @brief  Funcion que espera 3 segundos hasta cambiar el color del semaforo
 */
-tBoolean SEM_TRANS_tres_segundos(void){
-	//sleep(3000);
-	int i = 0, j = 0;
+tBoolean SEM_TRANS_tres_segundos(void)
+{
+  while(ticksOld==ticks);
+  ticksOld++;
+  return true;
+}
 
-	while(i < 1000){
-		j = 0;
-		while(j < 1000){
-			j++;
-		}
-		i++;
-	}
-
-	return true;
+void __attribute__((interrupt)) sysTickIntHandler(void)
+{
+  uticks=(uticks+1)%3;
+  if(uticks==0) ticks++;
 }
 
 /**
  * @brief  Funcion que dibuja en pantalla el color verde
 */
 void SEM_ACCION_verde(void){
-	FRAME_BUFFER_deleteElement(get_id_sem);
+	Borrar_area_pantalla(50, 6, 4, 30);
+	FRAME_BUFFER_insertar_imagen(g_pucCirc, 10, 6, 44, 30);
+	/*FRAME_BUFFER_deleteElement(get_id_sem);
 	get_id_sem=FRAME_BUFFER_insertText("Verde", 10, 5);
-	FRAME_BUFFER_writeToDisplay();
+	FRAME_BUFFER_writeToDisplay();*/
 }
 
 /**
  * @brief  Funcion que dibuja en pantalla el color ambar
 */
 void SEM_ACCION_ambar(void){
-	FRAME_BUFFER_deleteElement(get_id_sem);
+	Borrar_area_pantalla(50, 6, 4, 30);
+	FRAME_BUFFER_insertar_imagen(g_pucCirc, 10, 6, 24, 30);
+	/*FRAME_BUFFER_deleteElement(get_id_sem);
 	get_id_sem=FRAME_BUFFER_insertText("Ambar", 10, 5);
-	FRAME_BUFFER_writeToDisplay();
+	FRAME_BUFFER_writeToDisplay();*/
 }
 
 /**
  * @brief  Funcion que dibuja en pantalla el color rojo
 */
 void SEM_ACCION_rojo(void){
-	FRAME_BUFFER_deleteElement(get_id_sem);
+	Borrar_area_pantalla(50, 6, 4, 30);
+	FRAME_BUFFER_insertar_imagen(g_pucCirc, 10, 6, 4, 30);
+	/*FRAME_BUFFER_deleteElement(get_id_sem);
 	get_id_sem=FRAME_BUFFER_insertText("Rojo", 10, 5);
-	FRAME_BUFFER_writeToDisplay();
+	FRAME_BUFFER_writeToDisplay();*/
 }
 
 /**

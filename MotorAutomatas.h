@@ -51,12 +51,11 @@ typedef struct {
 ** DEFINITIONS AND MACROS 											**
 ** 																	**
 **********************************************************************/
-#define ITEM_EAC(ident,event,acci) { ident, #event, event, acci }
-#define ESTADO(nombre_estado) private const TS_EVEACC x##nombre_estado[]={
-#define FIN_ESTADO(nombre_fin_estado,ident_fin_estado,control),{0,NULL,NULL,NULL}};private const TS_ESTADO nombre_fin_estado = {ident_fin_estado,#ident_fin_estado,control,(TS_EVEACC *)  x##nombre_fin_estado};
-#define AUTOMATA(nombre_automata) private const TS_ESTADO * const(x##nombre_automata[]) = {
-#define FIN_AUTOMATA(nombre_fin_automata,ident,StopC),NULL}; public const TS_AUTOMATA nombre_fin_automata = {ident,#nombre_fin_automata,StopC,(TS_ESTADO **) x##nombre_fin_automata};
-
+#define ESTADO(nombre_estado) const TS_EVEACC x##nombre_estado[] =
+#define TRANSICION(id,evento,accion) {id, #evento, evento, accion}
+#define FIN_ESTADO(nombre_fin_estado,id,control) const TS_ESTADO nombre_fin_estado = {id,#id,control,(TS_EVEACC *) x##nombre_fin_estado};
+#define AUTOMATA(nombre_automata) const TS_ESTADO * const (x##nombre_automata[]) =
+#define FIN_AUTOMATA(nombre_automata,id,StopC) const TS_AUTOMATA nombre_automata = {id, #nombre_automata, StopC, (TS_ESTADO **) x##nombre_automata};
 #define NULL 0
 
 /*********************************************************************
