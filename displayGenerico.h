@@ -56,7 +56,7 @@ void DISPLAY_dibujarTexto(char * texto, int x, int y, int grayScale);
 void DISPLAY_dibujarImagen(char * pic, int x, int y, int width, int height);
 
 /**
- * @brief  Funcion que limpia el display
+ * @brief  Funcion que limpia el display entero
  *
 */
 void DISPLAY_borrar();

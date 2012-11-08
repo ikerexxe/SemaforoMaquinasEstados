@@ -25,7 +25,6 @@
 ** 																	**
 **********************************************************************/
 #include <string.h>
-
 #ifndef DISPLAY_H
 	#define DISPLAY_H
 	#include "displayGenerico.h"
@@ -40,7 +39,6 @@
 /**
  * Definimos el número de líneas que tiene el display, de columnas que que tiene el
  * display, el numero maximo de elementos y el valor del pixel vacio
- *
 */
 #define MAX_ROWS 11
 #define MAX_LINES 12
@@ -52,7 +50,7 @@
 ** EXPORTED VARIABLES 												**
 ** 																	**
 *********************************************************************/
-extern const unsigned char g_pucVacio[60];
+extern const unsigned char g_pucVacio[60]; //cuadrado vacio de un tamaño de 12x10
 
 /*********************************************************************
 ** 																	**

@@ -36,7 +36,7 @@
 ** 																	**
 **********************************************************************/
 int ejecutado = 0; //sirve para saber si es la primera vez que ejecutamos el programa
-const unsigned char g_pucCirc[60]  =  {
+const unsigned char g_pucCirc[60]  =  {		//circulo del semaforo
        0x00, 0x00, 0x44, 0x44, 0x00, 0x00,
        0x00, 0x4a, 0xaa, 0xaa, 0xa4, 0x00,
        0x04, 0xaa, 0xaa, 0xaa, 0xaa, 0x40,
@@ -49,7 +49,7 @@ const unsigned char g_pucCirc[60]  =  {
        0x00, 0x00, 0x44, 0x44, 0x00, 0x00
 };
 
-const unsigned char g_pucVacio[60]  =  {
+const unsigned char g_pucVacio[60]  =  {	//cuadrado vacio de un tamaño de 12x10
        0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
        0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
        0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -95,7 +95,7 @@ void DISPLAY_dibujarImagen(char * pic, int x, int y, int width, int height){
 }
 
 /**
- * @brief  Funcion que limpia el display
+ * @brief  Funcion que limpia el display entero
  *
 */
 void DISPLAY_borrar(){

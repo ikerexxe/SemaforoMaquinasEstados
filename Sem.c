@@ -35,10 +35,10 @@
 	#define FRAMEBUFFER_H
 	#include "frameBuffer.h"
 #endif
-/*#ifndef MOTORAUTOMATAS_H
+#ifndef MOTORAUTOMATAS_H
 	#define MOTORAUTOMATAS_H
 	#include "motorAutomatas.h"
-#endif*/
+#endif
 
 /*********************************************************************
 ** 																	**
@@ -66,7 +66,6 @@ AUTOMATA(Semaforo){
 	&Ambar,
 	&Rojo
 };
-
 FIN_AUTOMATA(Semaforo,101,SEM_AUT_finish)
 
 /*********************************************************************
@@ -87,20 +86,19 @@ unsigned int uticks=0;
 /**
  * @brief  Funcion que espera 3 segundos hasta cambiar el color del semaforo
 */
-tBoolean SEM_TRANS_tres_segundos(void)
-{
-  while(ticksOld==ticks);
-  ticksOld++;
+tBoolean SEM_TRANS_tres_segundos(void){
+	while(ticksOld==ticks);
+	ticksOld++;
 
-  return true;
+	return true;
 }
 
-void __attribute__((interrupt)) sysTickIntHandler(void)
-{
-  uticks=(uticks+1)%3;
-  if(uticks==0){
-	  ticks++;
-  }
+void __attribute__((interrupt)) sysTickIntHandler(void){
+	uticks=(uticks+1)%3;
+
+	if(uticks==0){
+		ticks++;
+	}
 }
 
 /**
@@ -108,7 +106,7 @@ void __attribute__((interrupt)) sysTickIntHandler(void)
 */
 void SEM_ACCION_verde(void){
 	FRAME_BUFFER_deleteElement(get_id_sem);
-	get_id_sem=FRAME_BUFFER_insertImage(g_pucCirc, 45, 44, 12, 10);
+	get_id_sem = FRAME_BUFFER_insertImage(g_pucCirc, 45, 44, 12, 10);
 	FRAME_BUFFER_writeToDisplay();
 }
 
@@ -117,7 +115,7 @@ void SEM_ACCION_verde(void){
 */
 void SEM_ACCION_ambar(void){
 	FRAME_BUFFER_deleteElement(get_id_sem);
-	get_id_sem=FRAME_BUFFER_insertImage(g_pucCirc, 45, 24, 12, 10);
+	get_id_sem = FRAME_BUFFER_insertImage(g_pucCirc, 45, 24, 12, 10);
 	FRAME_BUFFER_writeToDisplay();
 }
 
@@ -126,7 +124,7 @@ void SEM_ACCION_ambar(void){
 */
 void SEM_ACCION_rojo(void){
 	FRAME_BUFFER_deleteElement(get_id_sem);
-	get_id_sem=FRAME_BUFFER_insertImage(g_pucCirc, 45, 4, 12, 10);
+	get_id_sem = FRAME_BUFFER_insertImage(g_pucCirc, 45, 4, 12, 10);
 	FRAME_BUFFER_writeToDisplay();
 }
 

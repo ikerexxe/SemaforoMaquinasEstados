@@ -47,8 +47,8 @@
 	#define SEM_H
 	#include "sem.h"
 #endif
-#ifndef MOTOR_H
-	#define MOTOR_H
+#ifndef MOTORAUTOMATAS_H
+	#define MOTORAUTOMATAS_H
 	#include "motorAutomatas.h"
 #endif
 

@@ -24,7 +24,6 @@
 ** MODULES USED 													**
 ** 																	**
 **********************************************************************/
-
 #ifndef MOTORAUTOMATAS_H
 	#define MOTORAUTOMATAS_H
 	#include "motorAutomatas.h"
@@ -37,7 +36,7 @@
 **********************************************************************/
 BYTE fms_mv = 1;
 BYTE fms_mv_anterior;
-int get_id_motor=0;
+int get_id_motor = 0;
 
 /*********************************************************************
 **																	**
@@ -63,7 +62,7 @@ void EjecutaAutomata(TS_AUTOMATA *elAutomata)
 			return;
 	    }
 	}
-	get_id_motor=FRAME_BUFFER_insertText("\nmv>ERROR (fms_mv): ", fms_mv, 5, 5);
+	get_id_motor=FRAME_BUFFER_insertText("ERROR!!!!!", 5, 55);
 	FRAME_BUFFER_writeToDisplay();
 }
 

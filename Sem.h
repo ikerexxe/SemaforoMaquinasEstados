@@ -24,8 +24,8 @@
 ** MODULES USED 													**
 ** 																	**
 **********************************************************************/
-#ifndef MOTOR_H
-	#define MOTOR_H
+#ifndef MOTORAUTOMATAS_H
+	#define MOTORAUTOMATAS_H
 	#include "motorAutomatas.h"
 #endif
 
@@ -34,7 +34,7 @@
 ** EXPORTED VARIABLES 												**
 ** 																	**
 *********************************************************************/
-extern const unsigned char g_pucCirc[60];
+extern const unsigned char g_pucCirc[60]; //circulo del semaforo
 
 /*********************************************************************
 ** 																	**
@@ -46,6 +46,8 @@ extern const unsigned char g_pucCirc[60];
  * @brief  Funcion que espera 3 segundos hasta cambiar el color del semaforo
 */
 tBoolean SEM_TRANS_tres_segundos(void);
+
+void __attribute__((interrupt)) sysTickIntHandler(void);
 
 /**
  * @brief  Funcion que dibuja en pantalla el color verde

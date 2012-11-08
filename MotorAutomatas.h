@@ -11,6 +11,11 @@
 #include "driverlib/systick.h"
 #include "driverlib/gpio.h"
 
+#ifndef FRAMEBUFFER_H
+	#define FRAMEBUFFER_H
+	#include "frameBuffer.h"
+#endif
+
 /*********************************************************************
 ** 																	**
 ** TYPEDEFS AND STRUCTURES 											**
