@@ -1,4 +1,28 @@
-//Acordaros de añadir comentarios a los documentos
+/** @addtogroup MINI_PIANO_MODULE
+*
+* @{
+
+* @file MotorAutomatas.h
+* @brief La definicion de las estructuras utilizadas para crear un semaforo
+* Definición de:
+* 	Tipo Accion y Evento
+*	Tipo Estado
+*	Tipo  Maquina de estado
+*	Ademas de las funciones y macros utilizadas
+* @version v0.0
+* @date   	2012-11-08
+*
+* @note gpl2 license  2011, Iker Pedrosa
+*
+* @par VERSION HISTORY
+* Version : 1
+* Date : 2012-11-08
+* Revised by : 	iker.pedrosa@alumni.mondragon.edu
+* Description : Original version.
+*
+* @}
+*/
+
 
 /*********************************************************************
 **																	**
