@@ -47,7 +47,10 @@ extern const unsigned char g_pucCirc[60]; //circulo del semaforo
 */
 tBoolean SEM_TRANS_tres_segundos(void);
 
-void __attribute__((interrupt)) sysTickIntHandler(void);
+/**
+ * @brief  Funcion que crea una interrupcion cada segundo
+*/
+void __attribute__((interrupt)) IntUnSegundo(void);
 
 /**
  * @brief  Funcion que dibuja en pantalla el color verde

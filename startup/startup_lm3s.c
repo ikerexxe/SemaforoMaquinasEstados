@@ -104,7 +104,7 @@ extern int main(void);           /*!< The entry point for the application.    */
 extern void SystemInit(void);    /*!< Setup the microcontroller system(CMSIS) */
 void Default_Reset_Handler(void);   /*!< Default reset handler                */
 static void Default_Handler(void);  /*!< Default exception handler            */
-extern void __attribute__((interrupt)) sysTickIntHandler(void);
+extern void __attribute__((interrupt)) IntUnSegundo(void);
 
 /**
   *@brief The minimal vector table for a Cortex M3.  Note that the proper constructs
@@ -127,7 +127,7 @@ void (* const g_pfnVectors[])(void) =
   DebugMon_Handler,                    /*!< Debug monitor handler             */
   0,                                   /*!< Reserved                          */
   PendSV_Handler,                      /*!< The PendSV handler                */
-  sysTickIntHandler,                     /*!< The SysTick handler               */
+  IntUnSegundo,                     /*!< The SysTick handler               */
   
   /*----------External Exceptions---------------------------------------------*/
   GPIOPortA_IRQHandler,                /*!<  0: GPIO Port A                   */

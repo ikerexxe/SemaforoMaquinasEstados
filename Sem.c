@@ -93,7 +93,10 @@ tBoolean SEM_TRANS_tres_segundos(void){
 	return true;
 }
 
-void __attribute__((interrupt)) sysTickIntHandler(void){
+/**
+ * @brief  Funcion que crea una interrupcion cada segundo
+*/
+void __attribute__((interrupt)) IntUnSegundo(void){
 	uticks=(uticks+1)%3;
 
 	if(uticks==0){
