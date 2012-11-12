@@ -5,19 +5,19 @@
 * @file MotorAutomatas.h
 * @brief La definicion de las estructuras utilizadas para crear un semaforo
 * Definición de:
-* 	Tipo Accion y Evento
-*	Tipo Estado
-*	Tipo  Maquina de estado
+* 	Definicion de la estructura Accion y Evento
+*	Definicion de la estructura Estado
+*	Definicion de la estructura  Maquina de estado
 *	Ademas de las funciones y macros utilizadas
 * @version v0.0
 * @date   	2012-11-08
 *
-* @note gpl2 license  2011, Iker Pedrosa
+* @note gpl2 license  2011, Daniel Collado
 *
 * @par VERSION HISTORY
 * Version : 1
 * Date : 2012-11-08
-* Revised by : 	iker.pedrosa@alumni.mondragon.edu
+* Revised by : 	daniel.collado@alumni.mondragon.edu
 * Description : Original version.
 *
 * @}
@@ -93,5 +93,13 @@ typedef struct {
 ** 																	**
 *********************************************************************/
 
+/**
+ * @brief  Funcion que ejecuta el automata
+ *
+*/
 void EjecutaAutomata( TS_AUTOMATA *elAutomata);
+/**
+ * @brief  Funcion que ejecuta el estado
+ *
+*/
 void EjecutaEstado  ( TS_ESTADO   *elEstado);

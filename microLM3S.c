@@ -40,10 +40,15 @@
  *
 */
 void MICRO_init(){
+	//Configuramos el reloj del sistema a 8 MHz
 	SysCtlClockSet(SYSCTL_SYSDIV_1 | SYSCTL_USE_OSC | SYSCTL_OSC_MAIN |SYSCTL_XTAL_8MHZ);
+	//Configuramos cada cuantos ciclos de reloj tiene que interrumpirnos el reloj del sistema.
 	SysTickPeriodSet(8000000); // periodo=1 seg
+	//habilitamos la interrupcion del Systick del sistema.
 	SysTickIntEnable();
+	//habilitamos el conteo de los tick del sistema.
 	SysTickEnable();
+	//Habilitamos las interupciones.
 	IntMasterEnable();
 }
 
