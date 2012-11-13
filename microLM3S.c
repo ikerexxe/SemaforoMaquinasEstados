@@ -36,7 +36,8 @@
 **********************************************************************/
 
 /**
- * @brief  Funcion que inicializa el reloj de la LM3S8962
+ * @brief  Funcion que inicializa el reloj de la LM3S8962 y que habilita las interrupciones
+ * para que se puedan hacer funciones de tipo sleep
  *
 */
 void MICRO_init(){
@@ -48,7 +49,7 @@ void MICRO_init(){
 	SysTickIntEnable();
 	//habilitamos el conteo de los tick del sistema.
 	SysTickEnable();
-	//Habilitamos las interupciones.
+	//Habilitamos las interrupciones.
 	IntMasterEnable();
 }
 

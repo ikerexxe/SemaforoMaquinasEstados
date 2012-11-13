@@ -38,7 +38,8 @@
 *********************************************************************/
 
 /**
- * @brief  Funcion que inicializa el reloj
+ * @brief  Funcion que inicializa el reloj de la LM3S8962 y que habilita las interrupciones
+ * para que se puedan hacer funciones de tipo sleep
  *
 */
 void MICRO_init();
