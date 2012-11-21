@@ -29,7 +29,7 @@
 
 #ifndef SEM_H
 	#define SEM_H
-	#include "sem.h"
+	#include "headers/sem.h"
 #endif
 #ifndef FRAMEBUFFER_H
 	#define FRAMEBUFFER_H

@@ -27,7 +27,7 @@
 #include "rit128x96x4.h"
 #ifndef DISPLAY_H
 	#define DISPLAY_H
-	#include "displayGenerico.h"
+	#include "headers/displayGenerico.h"
 #endif
 
 /*********************************************************************

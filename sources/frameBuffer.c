@@ -26,7 +26,7 @@
 **********************************************************************/
 #ifndef FRAMEBUFFER_H
 	#define FRAMEBUFFER_H
-	#include "frameBuffer.h"
+	#include "headers/frameBuffer.h"
 #endif
 
 /*********************************************************************

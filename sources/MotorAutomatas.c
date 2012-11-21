@@ -26,7 +26,7 @@
 **********************************************************************/
 #ifndef MOTORAUTOMATAS_H
 	#define MOTORAUTOMATAS_H
-	#include "motorAutomatas.h"
+	#include "headers/motorAutomatas.h"
 #endif
 
 /*********************************************************************

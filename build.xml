@@ -39,7 +39,7 @@
         <define name="LM3S8962"/>
 </defineset>
 			
-      <!-- include compile path -->
+      <!-- include compile path --><includepath path="D:\IRATXE\Mondragon\MASTER\1 Semestre\Metodos y estandares de programacion\GitHub\SemaforoMaquinasEstados"/>
       <includepath path="drivers"/>
       <includepath path="lm3slib/inc"/>
       <includepath path="lm3slib/driverlib"/>

@@ -33,19 +33,19 @@
 
 #ifndef FRAMEBUFFER_H
 	#define FRAMEBUFFER_H
-	#include "frameBuffer.h"
+	#include "headers/frameBuffer.h"
 #endif
 #ifndef DISPLAYGENERICO_H
 	#define DISPLAYGENERICO_H
-	#include "displayGenerico.h"
+	#include "headers/displayGenerico.h"
 #endif
 #ifndef MICRO_H
 	#define MICRO_H
-	#include "microGenerico.h"
+	#include "headers/microGenerico.h"
 #endif
 #ifndef SEM_H
 	#define SEM_H
-	#include "sem.h"
+	#include "headers/sem.h"
 #endif
 #ifndef MOTORAUTOMATAS_H
 	#define MOTORAUTOMATAS_H
@@ -58,18 +58,31 @@
 ** 																	**
 *********************************************************************/
 extern TS_AUTOMATA Semaforo;
+/*********************************************************************
+** 																	**
+** LOCAL FUNCTIONS 													**
+** 																	**
+**********************************************************************/
 
+/**
+ * @brief  Funcion que inicializa la aplicación
+ * Se inicializa en dispositibo y empieza a ejecutar el automata
+ *
+*/
 int main(void)
 {
-	MICRO_init();
-	DISPLAY_init();
+	MICRO_init();//inicializar el micro
+	DISPLAY_init();//inicializar el display
+	//Inserta texto en el display
 	FRAME_BUFFER_insertText("Rojo", 5, 5);
 	FRAME_BUFFER_insertText("Ambar", 5, 25);
 	FRAME_BUFFER_insertText("Verde", 5, 45);
+	//vuelca al display lo insertado en el buffer frame
 	FRAME_BUFFER_writeToDisplay();
+
     while(1)
     {
-    	EjecutaAutomata(&Semaforo);
+    	EjecutaAutomata(&Semaforo);//ejecuta el automata
     }
 }
 

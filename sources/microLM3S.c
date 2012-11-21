@@ -26,7 +26,7 @@
 **********************************************************************/
 #ifndef MICRO_H
 	#define MICRO_H
-	#include "microGenerico.h"
+	#include "headers/microGenerico.h"
 #endif
 
 /*********************************************************************
